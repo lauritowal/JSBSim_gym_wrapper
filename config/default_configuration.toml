@@ -20,3 +20,6 @@ title = 'configuration'
     [simulation.start_conditions]
         'propulsion/engine/set-running' = 1
 
+[flightgear]
+    'running' = true
+    'flightgear_time_factor' = 1

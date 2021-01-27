@@ -26,10 +26,34 @@ class Simulation(object):
         self.jsbsim = jsbsim.FGFDMExec(os.path.expanduser(self.configuration['simulation']['path_jsbsim']))
         self.jsbsim.set_debug_level(0)
         self.sim_dt = 1.0 / self.configuration['simulation']['jsbsim_dt_hz']
-        self.wall_clock_dt = 0
+        self.wall_clock_dt = None
+
+        if self.configuration['flightgear']['running']:
+            print("send data to flightgear...")
+            flightgear_output_config = os.path.join(os.path.dirname(os.path.abspath(__file__)), self.OUTPUT_FILE)
+            self.jsbsim.enable_output()
+            self.set_simulation_time_factor(self.configuration['flightgear']['flightgear_time_factor'])
+            self.jsbsim.set_output_directive(flightgear_output_config)
 
         aircraft = Aircraft(**self.configuration['simulation']['aircraft'])
         self.initialise(aircraft)
+
+    def set_simulation_time_factor(self, time_factor):
+        """
+        Specifies a factor, relative to realtime, for simulation to run at.
+
+        The simulation runs at realtime for time_factor = 1. It runs at double
+        speed for time_factor=2, and half speed for 0.5.
+
+        :param time_factor: int or float, nonzero, sim speed relative to realtime
+            if None, the simulation is run at maximum computational speed
+        """
+        if time_factor is None:
+            self.wall_clock_dt = None
+        elif time_factor <= 0:
+            raise ValueError('time factor must be positive and non-zero')
+        else:
+            self.wall_clock_dt = self.sim_dt / time_factor
 
     def initialise(self, aircraft: Aircraft):
         self.load_model(aircraft.jsbsim_id)
