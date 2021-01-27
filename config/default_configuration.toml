@@ -10,6 +10,17 @@ title = 'configuration'
         flightgear_id='c172p'
         name='Cessna172P'
         cruise_speed_kts=120
+    # Examples for a different aircraft:
+    #[simulation.aircraft]
+    #    jsbsim_id='a320'
+    #    flightgear_id='A320'
+    #    name='A320-211'
+    #    cruise_speed_kts=490
+    #[simulation.aircraft]
+    #    jsbsim_id='f15'
+    #    flightgear_id='f15'
+    #    name='f15c'
+    # cruise_speed_kts=220
 
     [simulation.initial_state]
         'ic/h-sl-ft' = 10000
