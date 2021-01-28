@@ -12,8 +12,8 @@ genutzt wird das Flugdynamische Modell (FDM) JSBSim: [jsbsim](https://github.com
 
 - [Beispiel](#beispiel)
 - [Ablauf der Installation](#ablauf-der-installation)
-    - [Installation JSBSim:](#installation-jsbsim)
-    - [Installation der Python Bibliothek jsbsim:](#installation-der-python-bibliothek-jsbsim)
+    - [Installation JSBSim](#installation-jsbsim)
+    - [Installation der Python Bibliothek jsbsim](#installation-der-python-bibliothek-jsbsim)
     - [Klonen von jsbsim:](#klonen-von-jsbsim)
     - [Testen der JSBSim-Umgebung](#testen-der-jsbsim-umgebung)
     - [Installation von JSBSim-gym-wrapper](#installation-von-jsbsim-gym-wrapper)
@@ -43,11 +43,11 @@ while time_step_sec <= 30:
     print("state", state)
 ```
 ## Ablauf der Installation
-### 1. Installation JSBSim:
+### 1. Installation JSBSim
 Beschreibungen für verschiedene Rechnersystem (Windows, Mac, Linux) sind unter:<br>
    [JSBSim - Quickstart](https://jsbsim-team.github.io/jsbsim-reference-manual/mypages/quickstart-building-the-program/)
    
-### 2. Installation der Python Bibliothek jsbsim:
+### 2. Installation der Python Bibliothek jsbsim
 
 ```
 pip install jsbsim
